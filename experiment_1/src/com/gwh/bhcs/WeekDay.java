@@ -6,46 +6,49 @@ import java.util.Scanner;
  * 输入日期判断星期几
  * 
  * @author guowh
- * @version 1.0
+ * @version 2.0
  */
 public class WeekDay {
 	// 初始化每个月有几天，不可修改
 	final private static int[] monthDay = new int[] { 29, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	// 初始化每个中文输出，不可修改
+	final private static String[] week = new String[] { "天", "一", "二", "三", "四", "五", "六", };
 
 	public static void main(String[] args) {
+		// 得到输入的合法日期
 		Scanner sc = new Scanner(System.in);
 		int[] date = receiveDate(sc);
 		sc.close();
-		System.out.println(date[0]);
-		System.out.println(date[1]);
-		System.out.println(date[2]);
 
-		// int firstday = 1;
-		// int thisday = 1;
-		// int sum = 0;
-		// for (int i = 1; i < year; i++) {
-		// if (runnian(i))
-		// firstday = (firstday + 366) % 7;
-		// else
-		// firstday = (firstday + 365) % 7;
-		// }
-		// thisday = firstday;
-		// for (int i = 1; i < 13; i++) {
-		// if ((thisday + 12) % 7 == 5)
-		// sum++;
-		// if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i ==
-		// 12)
-		// thisday = (thisday + 31) % 7;
-		// else if (i == 4 || i == 6 || i == 9 || i == 11)
-		// thisday = (thisday + 30) % 7;
-		// else {
-		// if (runnian(year))
-		// thisday = (thisday + 29) % 7;
-		// else
-		// thisday = (thisday + 28) % 7;
-		// }
-		// }
-		// System.out.println(sum);
+		// 接收输入的 年 月 日
+		int year = date[0];
+		int month = date[1];
+		int day = date[2];
+
+		// 定义第一天为星期一
+		int firstday = 1;
+		// 当前的这一天为星期一
+		int thisday = 1;
+
+		// 当前这一年的第一天是星期几
+		for (int i = 1; i < year; i++) {
+			if (isRunnian(i))
+				firstday = (firstday + 366) % 7;
+			else
+				firstday = (firstday + 365) % 7;
+		}
+
+		// 当前这个月的第一天是星期几
+		for (int i = 1; i < month; i++) {
+			if (i == 2 && isRunnian(year))
+				firstday = (firstday + monthDay[0]) % 7;
+			else
+				firstday = (firstday + monthDay[i]) % 7;
+		}
+
+		// 当前这个月的这一天是星期几
+		thisday = (firstday + day - 1) % 7;
+		System.out.println(year + "年" + month + "月" + day + "日是星期" + week[thisday]);
 	}
 
 	/**
