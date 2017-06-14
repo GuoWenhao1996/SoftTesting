@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * 输入日期判断星期几
  * 
- * @author guowh
+ * @author guowenhao
  * @version 2.0
  */
 public class WeekDay {
@@ -68,7 +68,7 @@ public class WeekDay {
 	}
 
 	/**
-	 * 判断输入的边长是否合法，合法返回输入，不合法则重新输入
+	 * 判断输入的日期是否合法，合法返回输入，不合法则重新输入
 	 * 
 	 * @param sc
 	 *            接收器

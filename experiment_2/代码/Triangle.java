@@ -1,11 +1,11 @@
-package com.gwh.bhcs;
+package com.gwh.hhcs;
 
 import java.util.Scanner;
 
 /**
- * 三角形类 用于练习白盒测试
+ * 三角形类 用于练习黑盒测试
  * 
- * @author 郭文浩
+ * @author guowenhao
  * @version 1.0
  */
 public class Triangle {
